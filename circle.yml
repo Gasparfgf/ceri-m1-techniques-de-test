@@ -1,0 +1,31 @@
+version: 1.0.0
+
+workflows:
+  version: 1.0.0
+  build_and_test:
+    jobs:
+      build:
+        filters:
+          branch:
+            # Branche master uniquement
+            only: master
+
+jobs:
+  build:
+    docker:
+      # Environnement Java 8 ou supérieur
+      - image: circleci/openjdk:8-jdk*
+    steps:
+      - checkout # Récupère le code du repository
+      # Execution des tests unitaires avec Maven
+      - run:
+          name: Setup Maven Project
+          command: mvn dependency:go-offline --batch-mode
+
+      - run:
+          name: Build Project With Maven
+          command: mvn clean compile
+
+      - run:
+          name: Run Tests
+          command: mvn test

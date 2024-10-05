@@ -14,7 +14,7 @@
         This is the set of this project for working on testing techniques.
     </description>
     <properties>
-        <java.version>21</java.version>
+        <java.version>8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>

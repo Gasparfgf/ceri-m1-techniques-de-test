@@ -2,11 +2,9 @@ version: 2.1
 
 jobs:
   build:
-    executor:
-      name: Docker Executor
-      docker:
-        # Environnement Java 8 ou supérieur
-        - image: circleci/openjdk:8-jdk*
+    docker:
+      # Environnement Java 8 ou supérieur
+      - image: circleci/openjdk:8-jdk*
     steps:
       - checkout # Récupère le code du repository
 

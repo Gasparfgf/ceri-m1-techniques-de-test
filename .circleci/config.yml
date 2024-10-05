@@ -1,0 +1,36 @@
+version: 2.1
+
+jobs:
+  build:
+    executor:
+      name: Docker Executor
+      docker:
+        # Environnement Java 8 ou supérieur
+        - image: circleci/openjdk:8-jdk*
+    steps:
+      - checkout # Récupère le code du repository
+
+      - run: # Install les dependences
+          name: Setup Maven Project
+          command: mvn dependency:go-offline --batch-mode
+
+      - run:
+          name: Build Project
+          command: mvn clean compile
+
+      - run: # Execution des tests unitaires
+          name: Run Tests
+          command: mvn test
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+        filters:
+          branches:
+            # Branche master uniquement
+            only: master

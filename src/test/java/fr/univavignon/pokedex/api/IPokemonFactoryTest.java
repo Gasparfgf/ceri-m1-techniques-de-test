@@ -14,31 +14,21 @@ import static org.mockito.Mockito.when;
 class IPokemonFactoryTest {
     private IPokemonFactory pokemonFactory;
     private Pokemon pokemon;
-    private int index;
-    private int cp;
-    private int hp;
-    private int dust;
-    private int candy;
+
 
     @BeforeEach
     void setUp() {
         pokemonFactory = mock(IPokemonFactory.class);
 
-        index = 133;
-        cp = 613;
-        hp = 64;
-        dust = 4000;
-        candy = 4;
-
-        pokemon = new Pokemon(index, "Bulbizarre", 126, 126,
-                90, cp, hp, dust, candy, 0.56);
+        pokemon = new Pokemon(133, "Bulbizarre", 126, 126,
+                90, 613, 64, 4000, 4, 0.56);
     }
 
     @Test
     @DisplayName("testing createPokemonInstance")
     void testCreatePokemonInstance(){
 
-        when(pokemonFactory.createPokemon(index,cp,hp,dust,candy)).thenReturn(pokemon);
+        when(pokemonFactory.createPokemon(133,613,64,4000,4)).thenReturn(pokemon);
 
         assertInstanceOf(Pokemon.class, pokemon);
         assertNotNull(pokemon);
@@ -48,7 +38,7 @@ class IPokemonFactoryTest {
     @DisplayName("testing createPokemonProperties")
     void testCreatePokemonProperties() {
 
-        when(pokemonFactory.createPokemon(index,cp,hp,dust,candy)).thenReturn(pokemon);
+        when(pokemonFactory.createPokemon(133,613,64,4000,4)).thenReturn(pokemon);
 
         assertTrue(pokemon.getIndex() > 0);
         assertTrue(pokemon.getCp() > 0);
@@ -57,10 +47,19 @@ class IPokemonFactoryTest {
         assertTrue(pokemon.getCandy() > 0);
     }
 
+    /*
+    Because some values must be limited
+     */
     @Test
-    @DisplayName("testing createPokemonBounderies")
-    void testCreatePokemonBounderies(){
+    @DisplayName("testing createPokemonBoundaries")
+    void testCreatePokemonBoundaries(){
 
+        when(pokemonFactory.createPokemon(133,613,64,4000,4)).thenReturn(pokemon);
+
+        // Niveau de base de l’espèce + Niveau de l’individu : contrainte non comprise
+
+        assertTrue(pokemon.getIndex() <= 150); // contrainte établie par l'énoncée
+        assertTrue(pokemon.getIv() <=1.0); // 1 represents 100%
     }
 
     @AfterEach

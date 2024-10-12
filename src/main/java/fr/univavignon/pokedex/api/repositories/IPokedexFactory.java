@@ -1,4 +1,4 @@
-package fr.univavignon.pokedex.api;
+package fr.univavignon.pokedex.api.repositories;
 
 /**
  * Factory interface for class that aims to create IPokedex instance.

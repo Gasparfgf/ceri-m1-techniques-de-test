@@ -1,5 +1,7 @@
 package fr.univavignon.pokedex.api;
 
+import fr.univavignon.pokedex.api.repositories.IPokedex;
+
 /**
  * Trainer POJO.
  * 

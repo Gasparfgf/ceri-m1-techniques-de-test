@@ -1,4 +1,7 @@
-package fr.univavignon.pokedex.api;
+package fr.univavignon.pokedex.api.repositories;
+
+import fr.univavignon.pokedex.api.PokedexException;
+import fr.univavignon.pokedex.api.PokemonMetadata;
 
 /**
  * An IPokemonMetadataProvider aims to provide PokemonMetadata

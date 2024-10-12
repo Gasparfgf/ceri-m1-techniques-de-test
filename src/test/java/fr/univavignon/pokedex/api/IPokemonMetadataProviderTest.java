@@ -16,25 +16,31 @@ class IPokemonMetadataProviderTest {
     }
 
     @Test
-    @DisplayName("testing getPokemonMetadata")
-    void testGetPokemonMetadata() throws PokedexException {
+    @DisplayName("testing getPokemonMetadataProperties")
+    void testGetPokemonMetadataProperties() throws PokedexException {
         // je fabrique les données
         int index = 1;
-        PokemonMetadata pokemon = new PokemonMetadata(index, "Aquali", 186, 168, 260);
+        PokemonMetadata pokemonMetadata = new PokemonMetadata(index, "Aquali", 186, 168, 260);
 
         // j'appele l'action
-        when(myInterface.getPokemonMetadata(index)).thenReturn(pokemon);
-
-        // je vérifie si le résultat est bien une instance de PokemonMetadata
-        // parce que ça peut être null dans les cas où
-        // l'utilisateur avec l'id demandé nexiste pas
-        assertInstanceOf(PokemonMetadata.class, pokemon);
+        when(myInterface.getPokemonMetadata(index)).thenReturn(pokemonMetadata);
 
         // je garantis que les données renvoyées sont correctes
-        assertEquals("Aquali",pokemon.getName());
-        assertEquals(186, pokemon.getAttack());
-        assertEquals(168, pokemon.getDefense());
-        assertEquals(260, pokemon.getStamina());
+        assertEquals("Aquali",pokemonMetadata.getName());
+        assertEquals(186, pokemonMetadata.getAttack());
+        assertEquals(168, pokemonMetadata.getDefense());
+        assertEquals(260, pokemonMetadata.getStamina());
+    }
+
+    @Test
+    @DisplayName("testing getPokemonMetadataInstance")
+    void testGetPokemonMetadataInstance() throws PokedexException {
+        int index = 1;
+        PokemonMetadata pokemonMetadata = new PokemonMetadata(index, "Aquali", 186, 168, 260);
+
+        when(myInterface.getPokemonMetadata(index)).thenReturn(pokemonMetadata);
+
+        assertInstanceOf(PokemonMetadata.class, pokemonMetadata);
     }
 
     @AfterEach

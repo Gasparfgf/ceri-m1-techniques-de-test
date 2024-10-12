@@ -1,7 +1,7 @@
 package fr.univavignon.pokedex.api.repositories;
 
-import fr.univavignon.pokedex.api.PokedexException;
-import fr.univavignon.pokedex.api.Pokemon;
+import fr.univavignon.pokedex.api.models.PokedexException;
+import fr.univavignon.pokedex.api.models.Pokemon;
 
 import java.util.Comparator;
 import java.util.List;

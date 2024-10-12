@@ -1,4 +1,4 @@
-package fr.univavignon.pokedex.api;
+package fr.univavignon.pokedex.api.models;
 
 /**
  * Custom exception for pokedex related error.

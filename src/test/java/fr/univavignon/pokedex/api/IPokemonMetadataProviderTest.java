@@ -1,5 +1,7 @@
 package fr.univavignon.pokedex.api;
 
+import fr.univavignon.pokedex.api.models.PokedexException;
+import fr.univavignon.pokedex.api.models.PokemonMetadata;
 import fr.univavignon.pokedex.api.repositories.IPokemonMetadataProvider;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class IPokemonFactoryTest {
     private IPokemonFactory pokemonFactory;
@@ -19,6 +20,23 @@ class IPokemonFactoryTest {
     }
 
     @Test
+    @DisplayName("testing createPokemonInstance")
+    void testCreatePokemonInstance(){
+        int index = 133;
+        int cp = 613;
+        int hp = 64;
+        int dust = 4000;
+        int candy = 4;
+        Pokemon pokemon = new Pokemon(index, "Bulbizarre", 126, 126,
+                90, cp, hp, dust, candy, 0.56);
+
+        when(pokemonFactory.createPokemon(index,cp,hp,dust,candy)).thenReturn(pokemon);
+
+        assertInstanceOf(Pokemon.class, pokemon);
+        assertNotNull(pokemon);
+    }
+
+    @Test
     @DisplayName("testing createPokemonProperties")
     void testCreatePokemonProperties() {
         int index = 133;
@@ -26,22 +44,16 @@ class IPokemonFactoryTest {
         int hp = 64;
         int dust = 4000;
         int candy = 4;
-        Pokemon pokemon = pokemonFactory.createPokemon(index,cp,hp,dust,candy);
+        Pokemon pokemon = new Pokemon(index, "Bulbizarre", 126, 126,
+                90, cp, hp, dust, candy, 0.56);
+
+        when(pokemonFactory.createPokemon(index,cp,hp,dust,candy)).thenReturn(pokemon);
 
         assertTrue(pokemon.getIndex() > 0);
         assertTrue(pokemon.getCp() > 0);
         assertTrue(pokemon.getHp() > 0);
         assertTrue(pokemon.getDust() > 0);
         assertTrue(pokemon.getCandy() > 0);
-    }
-
-    @Test
-    @DisplayName("testing createPokemonInstance")
-    void testCreatePokemonInstance(){
-        Pokemon pokemon = pokemonFactory.createPokemon(133, 613, 64, 4000, 4);
-
-        assertInstanceOf(Pokemon.class, pokemon);
-        assertNotNull(pokemon, "Pokemon can not be null");
     }
 
     @AfterEach

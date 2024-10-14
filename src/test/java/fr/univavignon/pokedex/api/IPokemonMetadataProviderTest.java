@@ -12,19 +12,19 @@ import static org.mockito.Mockito.*;
 
 class IPokemonMetadataProviderTest {
     private static IPokemonMetadataProvider myInterface;
+    private PokemonMetadata pokemonMetadata;
+    private int index;
 
     @BeforeEach
     void setUp() {
         myInterface = mock(IPokemonMetadataProvider.class);
+        pokemonMetadata = new PokemonMetadata(index, "Aquali", 186, 168, 260);
+        index = 1;
     }
 
     @Test
     @DisplayName("testing getPokemonMetadataProperties")
     void testGetPokemonMetadataProperties() throws PokedexException {
-        // je fabrique les données
-        int index = 1;
-        PokemonMetadata pokemonMetadata = new PokemonMetadata(index, "Aquali", 186, 168, 260);
-
         // j'appele l'action
         when(myInterface.getPokemonMetadata(index)).thenReturn(pokemonMetadata);
 
@@ -33,13 +33,13 @@ class IPokemonMetadataProviderTest {
         assertEquals(186, pokemonMetadata.getAttack());
         assertEquals(168, pokemonMetadata.getDefense());
         assertEquals(260, pokemonMetadata.getStamina());
+
+        assertThrows(PokedexException.class, () -> myInterface.getPokemonMetadata(151));
     }
 
     @Test
     @DisplayName("testing getPokemonMetadataInstance")
     void testGetPokemonMetadataInstance() throws PokedexException {
-        int index = 1;
-        PokemonMetadata pokemonMetadata = new PokemonMetadata(index, "Aquali", 186, 168, 260);
 
         when(myInterface.getPokemonMetadata(index)).thenReturn(pokemonMetadata);
 
@@ -49,6 +49,7 @@ class IPokemonMetadataProviderTest {
     @AfterEach
     void tearDown() {
         myInterface = null;
+        pokemonMetadata = null;
     }
 
 }

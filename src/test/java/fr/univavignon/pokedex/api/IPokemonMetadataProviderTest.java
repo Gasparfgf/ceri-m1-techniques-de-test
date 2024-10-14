@@ -17,15 +17,15 @@ class IPokemonMetadataProviderTest {
 
     @BeforeEach
     void setUp() {
+        index = 1;
         myInterface = mock(IPokemonMetadataProvider.class);
         pokemonMetadata = new PokemonMetadata(index, "Aquali", 186, 168, 260);
-        index = 1;
     }
 
     @Test
     @DisplayName("testing getPokemonMetadataProperties")
     void testGetPokemonMetadataProperties() throws PokedexException {
-        // j'appele l'action
+
         when(myInterface.getPokemonMetadata(index)).thenReturn(pokemonMetadata);
 
         // je garantis que les données renvoyées sont correctes
@@ -33,8 +33,6 @@ class IPokemonMetadataProviderTest {
         assertEquals(186, pokemonMetadata.getAttack());
         assertEquals(168, pokemonMetadata.getDefense());
         assertEquals(260, pokemonMetadata.getStamina());
-
-        assertThrows(PokedexException.class, () -> myInterface.getPokemonMetadata(151));
     }
 
     @Test

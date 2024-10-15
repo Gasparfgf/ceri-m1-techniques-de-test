@@ -57,9 +57,9 @@ class IPokemonFactoryTest {
         when(pokemonFactory.createPokemon(133,613,64,4000,4)).thenReturn(pokemon);
 
         // Niveau de base de l’espèce + Niveau de l’individu : contrainte non comprise
-
         assertTrue(pokemon.getIndex() <= 150); // contrainte établie par l'énoncée
         assertTrue(pokemon.getIv() <=1.0); // 1 represents 100%
+
     }
 
     @AfterEach

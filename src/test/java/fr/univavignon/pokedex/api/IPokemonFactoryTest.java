@@ -64,6 +64,7 @@ class IPokemonFactoryTest {
     @AfterEach
     void tearDown() {
         pokemonFactory = null;
+        finalPokemon = null;
         pokemon = null;
     }
 

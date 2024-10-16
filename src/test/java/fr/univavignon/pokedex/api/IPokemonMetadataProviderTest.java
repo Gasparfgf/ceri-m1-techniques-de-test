@@ -28,18 +28,17 @@ class IPokemonMetadataProviderTest {
 
         int idxNotValid = 2000;
 
-        when(myInterface.getPokemonMetadata(index)).thenReturn(pokemonMetadata);
         when((myInterface.getPokemonMetadata(idxNotValid))).thenThrow(
                 new PokedexException("Le metadata du pokemon pour l'indice donné n'existe pas.")
         );
+        when(myInterface.getPokemonMetadata(index)).thenReturn(pokemonMetadata);
 
+        assertThrows(PokedexException.class, () -> myInterface.getPokemonMetadata(idxNotValid));
         // je garantis que les données renvoyées sont correctes
         assertEquals("Aquali",pokemonMetadata.getName());
         assertEquals(186, pokemonMetadata.getAttack());
         assertEquals(168, pokemonMetadata.getDefense());
         assertEquals(260, pokemonMetadata.getStamina());
-
-        assertThrows(PokedexException.class, () -> myInterface.getPokemonMetadata(idxNotValid));
     }
 
     @Test
@@ -49,7 +48,6 @@ class IPokemonMetadataProviderTest {
         when(myInterface.getPokemonMetadata(index)).thenReturn(pokemonMetadata);
 
         assertInstanceOf(PokemonMetadata.class, pokemonMetadata);
-        assertNotNull(pokemonMetadata);
     }
 
     @AfterEach

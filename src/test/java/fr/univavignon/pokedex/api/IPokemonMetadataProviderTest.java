@@ -26,19 +26,6 @@ class IPokemonMetadataProviderTest {
     @DisplayName("testing getPokemonMetadataProperties")
     void testGetPokemonMetadataProperties() throws PokedexException {
 
-        when(myInterface.getPokemonMetadata(index)).thenReturn(pokemonMetadata);
-
-        // je garantis que les données renvoyées sont correctes
-        assertEquals("Aquali",pokemonMetadata.getName());
-        assertEquals(186, pokemonMetadata.getAttack());
-        assertEquals(168, pokemonMetadata.getDefense());
-        assertEquals(260, pokemonMetadata.getStamina());
-    }
-
-    @Test
-    @DisplayName("testing getPokemonMetadataInstance")
-    void testGetPokemonMetadataInstance() throws PokedexException {
-
         int idxNotValid = 2000;
 
         when(myInterface.getPokemonMetadata(index)).thenReturn(pokemonMetadata);
@@ -46,9 +33,23 @@ class IPokemonMetadataProviderTest {
                 new PokedexException("Le metadata du pokemon pour l'indice donné n'existe pas.")
         );
 
+        // je garantis que les données renvoyées sont correctes
+        assertEquals("Aquali",pokemonMetadata.getName());
+        assertEquals(186, pokemonMetadata.getAttack());
+        assertEquals(168, pokemonMetadata.getDefense());
+        assertEquals(260, pokemonMetadata.getStamina());
+
+        assertThrows(PokedexException.class, () -> myInterface.getPokemonMetadata(idxNotValid));
+    }
+
+    @Test
+    @DisplayName("testing getPokemonMetadataInstance")
+    void testGetPokemonMetadataInstance() throws PokedexException {
+
+        when(myInterface.getPokemonMetadata(index)).thenReturn(pokemonMetadata);
+
         assertInstanceOf(PokemonMetadata.class, pokemonMetadata);
         assertNotNull(pokemonMetadata);
-        assertThrows(PokedexException.class, () -> myInterface.getPokemonMetadata(idxNotValid));
     }
 
     @AfterEach

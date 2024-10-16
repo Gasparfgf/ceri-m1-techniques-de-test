@@ -22,29 +22,30 @@ class IPokemonFactoryTest {
 
         pokemon = new Pokemon(133, "Bulbizarre", 126, 126,
                 90, 613, 64, 4000, 4, 0.56);
+
+        when(pokemonFactory.createPokemon(133,613,64,4000,4)).thenReturn(pokemon);
     }
 
     @Test
     @DisplayName("testing createPokemonInstance")
     void testCreatePokemonInstance(){
 
-        when(pokemonFactory.createPokemon(133,613,64,4000,4)).thenReturn(pokemon);
+        Pokemon finalPokemon = pokemonFactory.createPokemon(133,613,64,4000,4);
 
-        assertInstanceOf(Pokemon.class, pokemon);
-        assertNotNull(pokemon);
+        assertInstanceOf(Pokemon.class, finalPokemon, "Le résultat obtenu doit être un `Pokemon`.");
     }
 
     @Test
     @DisplayName("testing createPokemonProperties")
     void testCreatePokemonProperties() {
 
-        when(pokemonFactory.createPokemon(133,613,64,4000,4)).thenReturn(pokemon);
+        Pokemon finalPokemon = pokemonFactory.createPokemon(133,613,64,4000,4);
 
-        assertTrue(pokemon.getIndex() > 0);
-        assertTrue(pokemon.getCp() > 0);
-        assertTrue(pokemon.getHp() > 0);
-        assertTrue(pokemon.getDust() > 0);
-        assertTrue(pokemon.getCandy() > 0);
+        assertTrue(finalPokemon.getIndex() > 0, "Pokemon ne peut pas être créé avec 'index' négatif.");
+        assertTrue(finalPokemon.getCp() > 0, "Pokemon ne peut pas être créé avec 'cp' négatif.");
+        assertTrue(finalPokemon.getHp() > 0, "Pokemon ne peut pas être créé avec 'hp' négatif.");
+        assertTrue(finalPokemon.getDust() > 0, "Pokemon ne peut pas être créé avec 'dust' négatif.");
+        assertTrue(finalPokemon.getCandy() > 0, "Pokemon ne peut pas être créé avec 'candy' négatif.");
     }
 
     /*
@@ -54,12 +55,13 @@ class IPokemonFactoryTest {
     @DisplayName("testing createPokemonBoundaries")
     void testCreatePokemonBoundaries(){
 
-        when(pokemonFactory.createPokemon(133,613,64,4000,4)).thenReturn(pokemon);
+        Pokemon finalPokemon = pokemonFactory.createPokemon(133,613,64,4000,4);
 
         // Niveau de base de l’espèce + Niveau de l’individu : contrainte non comprise
-        assertTrue(pokemon.getIndex() <= 150); // contrainte établie par l'énoncée
-        assertTrue(pokemon.getIv() <=1.0); // 1 represents 100%
-
+        assertTrue(finalPokemon.getIndex() <= 150,
+                "Pokemon ne peut pas être créé avec 'index>150'"); // contrainte établie par l'énoncée
+        assertTrue(finalPokemon.getIv() <=1.0,
+                "Pokemon ne peut pas être créé avec 'iv > 1.0'"); // 1 represents 100%
     }
 
     @AfterEach

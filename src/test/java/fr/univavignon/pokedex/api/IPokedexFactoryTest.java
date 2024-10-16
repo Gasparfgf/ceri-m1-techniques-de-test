@@ -32,10 +32,8 @@ class IPokedexFactoryTest {
 
         when(pokedexFactory.createPokedex(provider, pokemonFactory)).thenReturn(ipokedex);
 
-        IPokedex iPokedexFinal = pokedexFactory.createPokedex(provider, pokemonFactory);
-
-        assertInstanceOf(IPokedex.class, ipokedex, "Le résultat obtenu doit être une instance de `Ipokedex`");
-        assertNotNull(iPokedexFinal, "Le résultat obtenu ne doit pas être null.");
+        assertInstanceOf(IPokedex.class, pokedexFactory.createPokedex(provider, pokemonFactory),
+                "Le résultat obtenu doit être une instance de `Ipokedex`");
     }
 
     @AfterEach

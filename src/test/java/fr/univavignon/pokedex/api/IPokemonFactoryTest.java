@@ -13,6 +13,7 @@ import static org.mockito.Mockito.when;
 
 class IPokemonFactoryTest {
     private IPokemonFactory pokemonFactory;
+    private Pokemon finalPokemon;
     private Pokemon pokemon;
 
 
@@ -24,13 +25,13 @@ class IPokemonFactoryTest {
                 90, 613, 64, 4000, 4, 0.56);
 
         when(pokemonFactory.createPokemon(133,613,64,4000,4)).thenReturn(pokemon);
+
+        finalPokemon = pokemonFactory.createPokemon(133,613,64,4000,4);
     }
 
     @Test
     @DisplayName("testing createPokemonInstance")
     void testCreatePokemonInstance(){
-
-        Pokemon finalPokemon = pokemonFactory.createPokemon(133,613,64,4000,4);
 
         assertInstanceOf(Pokemon.class, finalPokemon, "Le résultat obtenu doit être un `Pokemon`.");
     }
@@ -38,8 +39,6 @@ class IPokemonFactoryTest {
     @Test
     @DisplayName("testing createPokemonProperties")
     void testCreatePokemonProperties() {
-
-        Pokemon finalPokemon = pokemonFactory.createPokemon(133,613,64,4000,4);
 
         assertTrue(finalPokemon.getIndex() > 0, "Pokemon ne peut pas être créé avec 'index' négatif.");
         assertTrue(finalPokemon.getCp() > 0, "Pokemon ne peut pas être créé avec 'cp' négatif.");
@@ -54,8 +53,6 @@ class IPokemonFactoryTest {
     @Test
     @DisplayName("testing createPokemonBoundaries")
     void testCreatePokemonBoundaries(){
-
-        Pokemon finalPokemon = pokemonFactory.createPokemon(133,613,64,4000,4);
 
         // Niveau de base de l’espèce + Niveau de l’individu : contrainte non comprise
         assertTrue(finalPokemon.getIndex() <= 150,

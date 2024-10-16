@@ -2,6 +2,7 @@ package fr.univavignon.pokedex.api;
 
 import fr.univavignon.pokedex.api.models.PokedexException;
 import fr.univavignon.pokedex.api.models.Pokemon;
+import fr.univavignon.pokedex.api.models.PokemonComparators;
 import fr.univavignon.pokedex.api.models.PokemonMetadata;
 import fr.univavignon.pokedex.api.repositories.IPokedex;
 import org.junit.jupiter.api.AfterEach;
@@ -20,6 +21,9 @@ class IPokedexTest {
     private Pokemon pokemon1;
     private Pokemon pokemon2;
     private Pokemon pokemon3;
+    private int idx1;
+    private int idx2;
+    private int idx3;
 
 
     @BeforeEach
@@ -36,6 +40,10 @@ class IPokedexTest {
         when(iPokedex.addPokemon(pokemon1)).thenReturn(0);
         when(iPokedex.addPokemon(pokemon2)).thenReturn(1);
         when(iPokedex.addPokemon(pokemon3)).thenReturn(2);
+
+        idx1 = iPokedex.addPokemon(pokemon1);
+        idx2 = iPokedex.addPokemon(pokemon2);
+        idx3 = iPokedex.addPokemon(pokemon3);
     }
 
 
@@ -43,21 +51,15 @@ class IPokedexTest {
     @DisplayName("testing size")
     void testSize() {
 
-        iPokedex.addPokemon(pokemon1);
-
-        when(iPokedex.size()).thenReturn(1);
+        when(iPokedex.size()).thenReturn(3);
 
         assertTrue(iPokedex.size() >= 0, "La taille ne peut pas être négative.");
-        assertEquals(1, iPokedex.size(), "La taille d'une liste avec un élément est 1.");
+        assertEquals(3, iPokedex.size(), "La taille d'une liste avec trois éléments c'est 3.");
     }
 
     @Test
     @DisplayName("testing addPokemon")
     void testAddPokemon() {
-
-        int idx1 = iPokedex.addPokemon(pokemon1);
-        int idx2 = iPokedex.addPokemon(pokemon2);
-        int idx3 = iPokedex.addPokemon(pokemon3);
 
         assertEquals(0, idx1, "Premier élément d'une liste doit avoir index 0.");
         assertEquals(1, idx2, "Deuxième élément d'une liste doit avoir index 1.");
@@ -68,7 +70,6 @@ class IPokedexTest {
     @DisplayName("testing getPokemon")
     void getPokemon() throws PokedexException {
 
-        int idx2 = iPokedex.addPokemon(pokemon2);
         int idxNotValid = 151;
 
         when(iPokedex.getPokemon(idx2)).thenReturn(pokemon2);
@@ -76,10 +77,9 @@ class IPokedexTest {
                 .thenThrow(new PokedexException("Le pokemon pour l'indice donné n'existe pas."));
 
         assertInstanceOf(Pokemon.class, iPokedex.getPokemon(idx2), "On ne peut obtenir que des pokemons.");
-        assertNotNull(iPokedex.getPokemon(idx2), "On ne peut pas obtenir de pokemon null.");
 
         assertEquals("Bulbizarre", iPokedex.getPokemon(idx2).getName(),
-                "On ne peut pas obtenir un élément différent pour l'index donné.");
+                "On ne peut pas obtenir un Ipokedex différent pour l'index donné.");
 
         assertThrows(PokedexException.class, () -> iPokedex.getPokemon(idxNotValid));
     }
@@ -88,22 +88,12 @@ class IPokedexTest {
     @DisplayName("testing getPokemonsList")
     void getPokemons() throws UnsupportedOperationException {
 
-        int idx1 = iPokedex.addPokemon(pokemon1);
-        int idx2 = iPokedex.addPokemon(pokemon2);
-        int idx3 = iPokedex.addPokemon(pokemon3);
-
         when(iPokedex.getPokemons()).thenReturn(
                 Arrays.asList(pokemon1, pokemon2, pokemon3)
         );
         // je garantis que la liste ne soit pas modifiable
         List<Pokemon> pokemonsList = Collections.unmodifiableList(iPokedex.getPokemons());
 
-        // for tests only
-        /*
-        pokemonsList.add(pokemon1);
-        pokemonsList.remove(idx2);
-        pokemonsList.clear();
-         */
         // les méthodes susceptibles de changer la liste
         assertThrows(UnsupportedOperationException.class, () ->{
             pokemonsList.add(pokemon2);
@@ -111,10 +101,10 @@ class IPokedexTest {
             pokemonsList.clear();
         }, "La liste ne peut subir aucune modification (add/remove/clear).");
 
-        assertEquals(1.0, pokemonsList.get(idx1).getIv(),
-                "Le pourcentage de perfection du pokemon à l'index 0 doit être 1.0.");
-        assertEquals(124, pokemonsList.get(idx2).getIndex(),
-                "L'index du pokemon à l'index 1 doit être 124.");
+        assertEquals("Aquali", pokemonsList.get(idx1).getName(),
+                "Le nom du pokemon à l'index 2 doit être Aquali.");
+        assertEquals("Bulbizarre", pokemonsList.get(idx2).getName(),
+                "Le nom du pokemon à l'index 2 doit être Bulbizarre.");
         assertEquals("Gaspar", pokemonsList.get(idx3).getName(),
                 "Le nom du pokemon à l'index 2 doit être Gaspar.");
     }
@@ -123,10 +113,7 @@ class IPokedexTest {
     @DisplayName("testing getPokemonsListComparator")
     void testGetPokemons() {
 
-        int idx1 = iPokedex.addPokemon(pokemon1);
-        int idx2 = iPokedex.addPokemon(pokemon2);
-        int idx3 = iPokedex.addPokemon(pokemon3);
-        Comparator<Pokemon> comparator = Comparator.comparing(Pokemon::getIndex);
+        PokemonComparators comparator = PokemonComparators.NAME;
 
         when(iPokedex.getPokemons(comparator)).thenReturn(
                 Arrays.asList(pokemon3, pokemon1, pokemon2)
@@ -134,12 +121,6 @@ class IPokedexTest {
         // je garantis que la liste ne soit pas modifiable
         List<Pokemon> pokemonsList = Collections.unmodifiableList(iPokedex.getPokemons(comparator));
 
-        // for tests only
-        /*
-        pokemonsList.add(pokemon1);
-        pokemonsList.remove(idx2);
-        pokemonsList.clear();
-*/
         // les méthodes susceptibles de changer la liste
         assertThrows(UnsupportedOperationException.class, () ->{
             pokemonsList.add(pokemon2);
@@ -147,9 +128,12 @@ class IPokedexTest {
             pokemonsList.clear();
         }, "La liste ne peut subir aucune modification (add/remove/clear).");
 
-        assertEquals("Gaspar", pokemonsList.get(idx1).getName());
-        assertEquals("Aquali", pokemonsList.get(idx2).getName());
-        assertEquals("Bulbizarre", pokemonsList.get(idx3).getName());
+        assertEquals("Gaspar", pokemonsList.get(idx1).getName(),
+                "Le nom du pokemon à l'index 0 doit être 'Gaspar'.");
+        assertEquals("Aquali", pokemonsList.get(idx2).getName(),
+                "Le nom du pokemon à l'index 1 doit être 'Aquali'.");
+        assertEquals("Bulbizarre", pokemonsList.get(idx3).getName(),
+                "Le nom du pokemon à l'index 0 doit être 'Bulbizarre'.");
     }
 
 

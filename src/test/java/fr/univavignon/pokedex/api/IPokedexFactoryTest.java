@@ -25,8 +25,8 @@ class IPokedexFactoryTest {
     }
 
     @Test
-    @DisplayName("testing testCreatePokedex")
-    void testCreatePokedex() {
+    @DisplayName("testing shouldCreatePokedex")
+    void shouldCreatePokedex() {
 
         IPokemonMetadataProvider provider = mock(IPokemonMetadataProvider.class);
         IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
@@ -35,7 +35,8 @@ class IPokedexFactoryTest {
         when(pokedexFactory.createPokedex(provider, pokemonFactory)).thenReturn(ipokedex);
 
         assertInstanceOf(IPokedex.class, pokedexFactory.createPokedex(provider, pokemonFactory),
-                "Le résultat obtenu doit être une instance de `Ipokedex`");
+                "Le résultat obtenu doit être une instance de `Ipokedex`"
+        );
     }
 
     @After

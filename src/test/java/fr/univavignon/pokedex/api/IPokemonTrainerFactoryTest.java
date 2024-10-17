@@ -16,6 +16,7 @@ class IPokemonTrainerFactoryTest {
     private IPokemonTrainerFactory trainerFactory;
     private IPokedexFactory pokedexFactory;
 
+
     @BeforeEach
     void setUp() {
 
@@ -24,8 +25,8 @@ class IPokemonTrainerFactoryTest {
     }
 
     @Test
-    @DisplayName("testing shouldCreateTrainerInstance")
-    void shouldCreateTrainerInstance() {
+    @DisplayName("testing createTrainer")
+    void shouldCreateTrainer() {
 
         IPokemonMetadataProvider metadataProvider = mock(IPokemonMetadataProvider.class);
         IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
@@ -42,6 +43,7 @@ class IPokemonTrainerFactoryTest {
                 "La méthode doit obtenir un 'PokemonTrainer'."
         );
     }
+
 
     @AfterEach
     void tearDown() {

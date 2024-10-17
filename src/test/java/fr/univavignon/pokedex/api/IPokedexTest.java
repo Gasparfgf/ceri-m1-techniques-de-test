@@ -49,7 +49,7 @@ class IPokedexTest {
 
     @Test
     @DisplayName("testing size")
-    void testSize() {
+    void shouldGetSize() {
 
         when(iPokedex.size()).thenReturn(3);
 
@@ -59,7 +59,7 @@ class IPokedexTest {
 
     @Test
     @DisplayName("testing addPokemon")
-    void testAddPokemon() {
+    void shouldAddPokemon() {
 
         assertEquals(0, idx1, "Premier élément d'une liste doit avoir index 0.");
         assertEquals(1, idx2, "Deuxième élément d'une liste doit avoir index 1.");
@@ -68,7 +68,7 @@ class IPokedexTest {
 
     @Test
     @DisplayName("testing getPokemon")
-    void getPokemon() throws PokedexException {
+    void shouldGetPokemon() throws PokedexException {
 
         int idxNotValid = 151;
 
@@ -76,7 +76,7 @@ class IPokedexTest {
         when(iPokedex.getPokemon(idxNotValid))
                 .thenThrow(new PokedexException("Le pokemon pour l'indice donné n'existe pas."));
 
-        assertInstanceOf(Pokemon.class, iPokedex.getPokemon(idx2), "On ne peut obtenir que des pokemons.");
+        assertInstanceOf(Pokemon.class, iPokedex.getPokemon(idx2), "On doit obtenir un pokemon.");
 
         assertEquals("Bulbizarre", iPokedex.getPokemon(idx2).getName(),
                 "On ne peut pas obtenir un Ipokedex différent pour l'index donné.");
@@ -86,11 +86,12 @@ class IPokedexTest {
 
     @Test
     @DisplayName("testing getPokemonsList")
-    void getPokemons() throws UnsupportedOperationException {
+    void shouldGetPokemonsUnmodifiableList() throws UnsupportedOperationException {
 
         when(iPokedex.getPokemons()).thenReturn(
                 Arrays.asList(pokemon1, pokemon2, pokemon3)
         );
+
         // je garantis que la liste ne soit pas modifiable
         List<Pokemon> pokemonsList = Collections.unmodifiableList(iPokedex.getPokemons());
 
@@ -111,7 +112,7 @@ class IPokedexTest {
 
     @Test
     @DisplayName("testing getPokemonsListComparator")
-    void testGetPokemons() {
+    void shouldGetPokemonsUnmodifiableListComparator() {
 
         PokemonComparators comparator = PokemonComparators.NAME;
 

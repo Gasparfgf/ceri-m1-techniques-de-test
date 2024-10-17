@@ -29,16 +29,17 @@ class IPokemonFactoryTest {
         finalPokemon = pokemonFactory.createPokemon(133,613,64,4000,4);
     }
 
+
     @Test
-    @DisplayName("testing createPokemonInstance")
-    void testCreatePokemonInstance(){
+    @DisplayName("testing createPokemon")
+    void shouldCreatePokemon(){
 
         assertInstanceOf(Pokemon.class, finalPokemon, "Le résultat obtenu doit être un `Pokemon`.");
     }
 
     @Test
     @DisplayName("testing createPokemonProperties")
-    void testCreatePokemonProperties() {
+    void shouldValidateCreatePokemonProperties() {
 
         assertTrue(finalPokemon.getIndex() > 0, "Pokemon ne peut pas être créé avec 'index' négatif.");
         assertTrue(finalPokemon.getCp() > 0, "Pokemon ne peut pas être créé avec 'cp' négatif.");
@@ -52,13 +53,14 @@ class IPokemonFactoryTest {
      */
     @Test
     @DisplayName("testing createPokemonBoundaries")
-    void testCreatePokemonBoundaries(){
+    void shouldRespectCreatePokemonBoundaries(){
 
         assertTrue(finalPokemon.getIndex() <= 150,
                 "Pokemon ne peut pas être créé avec 'index>150'"); // contrainte établie par l'énoncée
         assertTrue(finalPokemon.getIv() <=100,
-                "Pokemon ne peut pas être créé avec 'iv > 100'"); // 1 represents 100%
+                "Pokemon ne peut pas être créé avec 'iv > 100'");
     }
+
 
     @AfterEach
     void tearDown() {

@@ -4,6 +4,8 @@ import fr.univavignon.pokedex.api.repositories.IPokedex;
 import fr.univavignon.pokedex.api.repositories.IPokedexFactory;
 import fr.univavignon.pokedex.api.repositories.IPokemonFactory;
 import fr.univavignon.pokedex.api.repositories.IPokemonMetadataProvider;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,8 +19,8 @@ import static org.mockito.Mockito.when;
 class IPokedexFactoryTest {
     private IPokedexFactory pokedexFactory;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         pokedexFactory = mock(IPokedexFactory.class);
     }
 
@@ -36,8 +38,8 @@ class IPokedexFactoryTest {
                 "Le résultat obtenu doit être une instance de `Ipokedex`");
     }
 
-    @AfterEach
-    void tearDown() {
+    @After
+    public void tearDown() {
         pokedexFactory = null;
     }
 }

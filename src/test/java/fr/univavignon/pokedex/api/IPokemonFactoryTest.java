@@ -54,8 +54,6 @@ class IPokemonFactoryTest {
     @DisplayName("testing createPokemonBoundaries")
     void testCreatePokemonBoundaries(){
 
-        // Niveau de base de l’espèce + Niveau de l’individu : contrainte non comprise
-
         assertTrue(finalPokemon.getIndex() <= 150,
                 "Pokemon ne peut pas être créé avec 'index>150'"); // contrainte établie par l'énoncée
         assertTrue(finalPokemon.getIv() <=100,

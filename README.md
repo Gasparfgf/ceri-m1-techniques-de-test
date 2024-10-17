@@ -48,15 +48,19 @@ Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin d
 ### Outils utilisés pour garantir la qualité et la fiabilité
 
 1. **Code Coverage** :
+
   Codecov est utilisé pour surveiller la couverture des tests unitaires. Cela permet de nous assurer que la majorité du code est couvert par des tests, garantissant ainsi une meilleure fiabilité du projet.
 
-2. **CircleCI** :
+3. **CircleCI** :
+
   CircleCI est utilisé pour l'intégration continue. Il s'assure que chaque commit et pull request passe par un processus automatisé de build et de test afin de maintenir la qualité du code.
 
-3. **Mockito** :
+4. **Mockito** :
+
   Mockito est utilisé pour simuler des objets et interactions dans les tests unitaires. Cela permet de tester les fonctionnalités de manière isolée, en simulant les dépendances du système.
 
-4. **POM (Project Object Model)** : 
+5. **POM (Project Object Model)** :
+
   Le fichier `pom.xml` gère toutes les dépendances de ce projet Java via Maven, incluant les bibliothèques de test (JUnit, Mockito), et les plugins pour le build et la couverture de code.
 
 

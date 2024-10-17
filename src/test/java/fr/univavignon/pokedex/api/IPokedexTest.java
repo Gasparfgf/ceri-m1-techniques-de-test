@@ -31,11 +31,11 @@ class IPokedexTest {
         iPokedex = mock(IPokedex.class);
 
         pokemon1 = new Pokemon(18, "Aquali", 186, 168,
-                260, 2729, 202, 5000, 4, 1.0);
+                260, 2729, 202, 5000, 4, 100);
         pokemon2 = new Pokemon(124, "Bulbizarre", 126, 126,
-                90, 613, 64, 4000, 4, 0.56);
+                90, 613, 64, 4000, 4, 56);
         pokemon3 = new Pokemon(2, "Gaspar", 156, 158,
-                120, 800, 64, 5000, 5, 0.75);
+                120, 800, 64, 5000, 5, 75);
 
         when(iPokedex.addPokemon(pokemon1)).thenReturn(0);
         when(iPokedex.addPokemon(pokemon2)).thenReturn(1);

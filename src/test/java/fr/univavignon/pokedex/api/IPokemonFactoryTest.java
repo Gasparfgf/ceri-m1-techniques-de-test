@@ -22,7 +22,7 @@ class IPokemonFactoryTest {
         pokemonFactory = mock(IPokemonFactory.class);
 
         pokemon = new Pokemon(133, "Bulbizarre", 126, 126,
-                90, 613, 64, 4000, 4, 0.56);
+                90, 613, 64, 4000, 4, 56);
 
         when(pokemonFactory.createPokemon(133,613,64,4000,4)).thenReturn(pokemon);
 
@@ -55,10 +55,11 @@ class IPokemonFactoryTest {
     void testCreatePokemonBoundaries(){
 
         // Niveau de base de l’espèce + Niveau de l’individu : contrainte non comprise
+
         assertTrue(finalPokemon.getIndex() <= 150,
                 "Pokemon ne peut pas être créé avec 'index>150'"); // contrainte établie par l'énoncée
-        assertTrue(finalPokemon.getIv() <=1.0,
-                "Pokemon ne peut pas être créé avec 'iv > 1.0'"); // 1 represents 100%
+        assertTrue(finalPokemon.getIv() <=100,
+                "Pokemon ne peut pas être créé avec 'iv > 100'"); // 1 represents 100%
     }
 
     @AfterEach

@@ -44,7 +44,6 @@ class IPokemonTrainerFactoryTest {
         );
     }
 
-
     @AfterEach
     void tearDown() {
         trainerFactory = null;

@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 class IPokedexFactoryTest {
     private IPokedexFactory pokedexFactory;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         pokedexFactory = mock(IPokedexFactory.class);
     }
@@ -39,7 +39,7 @@ class IPokedexFactoryTest {
         );
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         pokedexFactory = null;
     }

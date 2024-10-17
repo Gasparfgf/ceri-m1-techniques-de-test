@@ -1,4 +1,6 @@
-package fr.univavignon.pokedex.api;
+package fr.univavignon.pokedex.api.repositories;
+
+import fr.univavignon.pokedex.api.models.Pokemon;
 
 /**
  * Factory interface for class that aims to create Pokemon instance.

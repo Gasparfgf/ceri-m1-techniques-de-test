@@ -1,5 +1,9 @@
 version: 2.1
 
+
+orbs:
+  codecov: codecov/codecov@4.0.1
+
 jobs:
   build:
     docker:
@@ -16,9 +20,13 @@ jobs:
           name: Build Project
           command: mvn clean compile
 
-      - run: # Execution des tests unitaires
-          name: Run Tests
-          command: mvn test
+      - run: # Execution des tests unitaires et génération du rapport Jacoco
+          name: Run Tests & Generate Reports
+          command: mvn clean test
+
+      - run:
+          name: Upload to Codecov
+          command:
 
 workflows:
   version: 2
@@ -29,3 +37,8 @@ workflows:
           branches:
             # Branche master uniquement
             only: master
+
+  upload-to-codecov:
+    jobs:
+      - checkout
+      - codecov/upload

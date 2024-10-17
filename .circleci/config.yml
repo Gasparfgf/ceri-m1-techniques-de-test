@@ -24,18 +24,17 @@ jobs:
           name: Run Tests & Generate Reports
           command: mvn clean test
 
-      - run:
-          name: Upload to Codecov
-          command:
-
 workflows:
   version: 2
-  upload-to-codecov:
+  build_and_test:
     jobs:
       - build:
         filters:
           branches:
             # Branche master uniquement
             only: master
-      - codecov/upload
 
+  upload-to-codecov:
+    jobs:
+      - checkout
+      - codecov/upload

@@ -16,7 +16,6 @@ public class IPokemonMetadataService implements IPokemonMetadataProvider{
         );
     }
 
-
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
         PokemonMetadata pokemonMetadata = metadataList.get(index);

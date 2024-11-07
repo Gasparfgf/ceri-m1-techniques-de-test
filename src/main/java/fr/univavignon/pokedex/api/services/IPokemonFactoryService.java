@@ -4,18 +4,22 @@ import fr.univavignon.pokedex.api.models.Pokemon;
 import fr.univavignon.pokedex.api.repositories.IPokemonFactory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class IPokemonFactoryService implements IPokemonFactory {
-    private List<Pokemon> pokemonList = new ArrayList<>();
+    private Map<Integer, Pokemon> pokemonMap;
 
-    public IPokemonFactoryService(){}
+    public IPokemonFactoryService(){
+        this.pokemonMap = new HashMap<>();
+    }
 
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
         Pokemon pokemon = new Pokemon(index, "Bulbizarre", 126, 126,
                 90, cp, hp, dust, candy, 56);
-        pokemonList.add(pokemon);
+        pokemonMap.put(index, pokemon);
 
         return pokemon;
     }

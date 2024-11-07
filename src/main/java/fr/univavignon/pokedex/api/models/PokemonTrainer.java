@@ -1,12 +1,16 @@
 package fr.univavignon.pokedex.api.models;
 
 import fr.univavignon.pokedex.api.repositories.IPokedex;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Trainer POJO.
  * 
  * @author fv
  */
+@Getter
+@Setter
 public class PokemonTrainer {
 
 	/** Trainer name. **/
@@ -29,21 +33,6 @@ public class PokemonTrainer {
 		this.name = name;
 		this.team = team;
 		this.pokedex = pokedex;
-	}
-	
-	/** Name getter. **/
-	public String getName() {
-		return name;
-	}
-
-	/** Team getter. **/
-	public Team getTeam() {
-		return team;
-	}
-	
-	/** Pokedex getter. **/
-	public IPokedex getPokedex() {
-		return pokedex;
 	}
 	
 }

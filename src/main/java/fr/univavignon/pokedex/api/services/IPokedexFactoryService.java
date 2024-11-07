@@ -11,7 +11,7 @@ import java.util.List;
 public class IPokedexFactoryService implements IPokedexFactory {
     private List<IPokedex> pokedexList;
 
-    public IPokemonFactory(){
+    public IPokedexFactoryService(){
         pokedexList = new ArrayList<>();
     }
 

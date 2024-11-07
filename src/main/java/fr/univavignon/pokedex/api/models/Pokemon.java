@@ -1,10 +1,15 @@
 package fr.univavignon.pokedex.api.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Pokemon POJO.
  * 
  * @author fv
  */
+@Setter
+@Getter
 public final class Pokemon extends PokemonMetadata {
 
 	/** Combat Point of the pokemon. **/
@@ -53,31 +58,6 @@ public final class Pokemon extends PokemonMetadata {
 		this.dust = dust;
 		this.candy = candy;
 		this.iv = iv;
-	}
-
-	/** Combat Point getter getter. **/
-	public int getCp() {
-		return cp;
-	}
-	
-	/** HP getter. **/
-	public int getHp() {
-		return hp;
-	}
-
-	/** Dust getter. **/
-	public int getDust() {
-		return dust;
-	}
-
-	/** Candy getter. **/
-	public int getCandy() {
-		return candy;
-	}
-	
-	/** IV getter. **/
-	public double getIv() {
-		return iv;
 	}
 	
 }

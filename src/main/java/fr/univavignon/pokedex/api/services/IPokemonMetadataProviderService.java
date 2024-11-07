@@ -12,7 +12,6 @@ public class IPokemonMetadataProviderService implements IPokemonMetadataProvider
 
     public IPokemonMetadataProviderService(){
         this.pokemonMetadata = new HashMap<>();
-        // Ajout de quelques exemples de Pokémon
         pokemonMetadata.put(1, new PokemonMetadata(1, "Bulbasaur", 126, 126, 90));
         pokemonMetadata.put(2, new PokemonMetadata(2, "Ivysaur", 156, 158, 120));
         pokemonMetadata.put(133, new PokemonMetadata(133, "Eevee", 104, 114, 110));

@@ -3,9 +3,7 @@ package fr.univavignon.pokedex.api.services;
 import fr.univavignon.pokedex.api.models.Pokemon;
 import fr.univavignon.pokedex.api.repositories.IPokemonFactory;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class IPokemonFactoryService implements IPokemonFactory {

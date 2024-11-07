@@ -4,6 +4,8 @@ import fr.univavignon.pokedex.api.models.PokedexException;
 import fr.univavignon.pokedex.api.models.Pokemon;
 import fr.univavignon.pokedex.api.models.PokemonMetadata;
 import fr.univavignon.pokedex.api.repositories.IPokedex;
+import fr.univavignon.pokedex.api.repositories.IPokemonFactory;
+import fr.univavignon.pokedex.api.repositories.IPokemonMetadataProvider;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,11 +13,11 @@ import java.util.Comparator;
 import java.util.List;
 
 public class IPokedexService implements IPokedex {
-    private final IPokemonMetadataProviderService metadataProvider;
-    private final IPokemonFactoryService pokemonFactory;
+    private final IPokemonMetadataProvider metadataProvider;
+    private final IPokemonFactory pokemonFactory;
     private final List<Pokemon> pokemonList;
 
-    public IPokedexService(IPokemonMetadataProviderService metadataProvider, IPokemonFactoryService pokemonFactory) {
+    public IPokedexService(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
         this.metadataProvider = metadataProvider;
         this.pokemonFactory = pokemonFactory;
         this.pokemonList = new ArrayList<>();

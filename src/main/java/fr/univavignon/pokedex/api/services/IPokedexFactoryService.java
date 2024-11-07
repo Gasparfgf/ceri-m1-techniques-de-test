@@ -1,4 +1,24 @@
 package fr.univavignon.pokedex.api.services;
 
-public class IPokedexFactoryService {
+import fr.univavignon.pokedex.api.repositories.IPokedex;
+import fr.univavignon.pokedex.api.repositories.IPokedexFactory;
+import fr.univavignon.pokedex.api.repositories.IPokemonFactory;
+import fr.univavignon.pokedex.api.repositories.IPokemonMetadataProvider;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class IPokedexFactoryService implements IPokedexFactory {
+    private List<IPokedex> pokedexList;
+
+    public IPokemonFactory(){
+        pokedexList = new ArrayList<>();
+    }
+
+    @Override
+    public IPokedex createPokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
+        IPokedex pokedex = new IPokedexService(metadataProvider, pokemonFactory);
+        pokedexList.add(pokedex);
+        return pokedex;
+    }
 }

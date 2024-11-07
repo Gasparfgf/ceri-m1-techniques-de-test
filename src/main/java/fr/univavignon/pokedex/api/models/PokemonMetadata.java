@@ -1,10 +1,16 @@
 package fr.univavignon.pokedex.api.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Pokemon metadata POJO.
  * 
  * @author fv
  */
+
+@Getter
+@Setter
 public class PokemonMetadata {
 
 	/** Pokemon index. **/
@@ -37,31 +43,6 @@ public class PokemonMetadata {
 		this.attack = attack;
 		this.defense = defense;
 		this.stamina = stamina;
-	}
-	
-	/** Index getter. **/
-	public int getIndex() {
-		return index;
-	}
-	
-	/** Name getter.**/
-	public String getName() {
-		return name;
-	}
-
-	/** Attack level getter. **/
-	public int getAttack() {
-		return attack;
-	}
-
-	/** Defense level getter. **/
-	public int getDefense() {
-		return defense;
-	}
-
-	/** Stamina level getter. **/
-	public int getStamina() {
-		return stamina;
 	}
 
 }

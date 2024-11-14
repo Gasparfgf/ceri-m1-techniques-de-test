@@ -8,8 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class IPokemonFactoryTest {
     private IPokemonFactory pokemonFactory;
@@ -35,6 +34,8 @@ class IPokemonFactoryTest {
     void shouldCreatePokemon(){
 
         assertInstanceOf(Pokemon.class, finalPokemon, "Le résultat obtenu doit être un `Pokemon`.");
+        assertEquals(pokemon, finalPokemon);
+        verify(pokemonFactory).createPokemon(133,613,64,4000,4);
     }
 
     @Test

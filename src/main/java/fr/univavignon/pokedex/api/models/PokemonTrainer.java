@@ -2,6 +2,7 @@ package fr.univavignon.pokedex.api.models;
 
 import fr.univavignon.pokedex.api.repositories.IPokedex;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -11,6 +12,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@RequiredArgsConstructor
 public class PokemonTrainer {
 
 	/** Trainer name. **/
@@ -29,10 +31,5 @@ public class PokemonTrainer {
 	 * @param team Trainer team.
 	 * @param pokedex Trainer pokedex.
 	 */
-	public PokemonTrainer(final String name, final Team team, final IPokedex pokedex) {
-		this.name = name;
-		this.team = team;
-		this.pokedex = pokedex;
-	}
-	
+
 }

@@ -13,8 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class IPokedexTest {
     private static IPokedex iPokedex;
@@ -55,6 +54,8 @@ class IPokedexTest {
 
         assertTrue(iPokedex.size() >= 0, "La taille ne peut pas être négative.");
         assertEquals(3, iPokedex.size(), "La taille d'une liste avec trois éléments c'est 3.");
+
+        verify(iPokedex).size();
     }
 
     @Test
@@ -64,24 +65,34 @@ class IPokedexTest {
         assertEquals(0, idx1, "Premier élément d'une liste doit avoir index 0.");
         assertEquals(1, idx2, "Deuxième élément d'une liste doit avoir index 1.");
         assertEquals(2, idx3, "Troisième élément d'une liste doit avoir index 2.");
+
+        verify(iPokedex).addPokemon(pokemon1);
     }
 
     @Test
     @DisplayName("testing getPokemon")
     void shouldGetPokemon() throws PokedexException {
 
-        int idxNotValid = 151;
-
         when(iPokedex.getPokemon(idx2)).thenReturn(pokemon2);
-        when(iPokedex.getPokemon(idxNotValid))
-                .thenThrow(new PokedexException("Le pokemon pour l'indice donné n'existe pas."));
 
         assertInstanceOf(Pokemon.class, iPokedex.getPokemon(idx2), "On doit obtenir un pokemon.");
-
         assertEquals("Bulbizarre", iPokedex.getPokemon(idx2).getName(),
                 "On ne peut pas obtenir un Ipokedex différent pour l'index donné.");
 
+        verify(iPokedex).getPokemon(idx2);
+    }
+
+    @Test
+    @DisplayName("testing getPokemonWithInvalidIndex")
+    void shouldNotGetPokemonWithInvalidIndex() throws PokedexException {
+
+        int idxNotValid = 151;
+        when(iPokedex.getPokemon(idxNotValid))
+                .thenThrow(new PokedexException("Le pokemon pour l'indice donné n'existe pas."));
+
         assertThrows(PokedexException.class, () -> iPokedex.getPokemon(idxNotValid));
+
+        verify(iPokedex).getPokemon(idxNotValid);
     }
 
     @Test
@@ -108,6 +119,8 @@ class IPokedexTest {
                 "Le nom du pokemon à l'index 2 doit être Bulbizarre.");
         assertEquals("Gaspar", pokemonsList.get(idx3).getName(),
                 "Le nom du pokemon à l'index 2 doit être Gaspar.");
+
+        verify(iPokedex).getPokemons();
     }
 
     @Test
@@ -135,6 +148,8 @@ class IPokedexTest {
                 "Le nom du pokemon à l'index 1 doit être 'Aquali'.");
         assertEquals("Bulbizarre", pokemonsList.get(idx3).getName(),
                 "Le nom du pokemon à l'index 0 doit être 'Bulbizarre'.");
+
+        verify(iPokedex).getPokemons(comparator);
     }
 
 

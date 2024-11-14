@@ -11,10 +11,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class IPokedexFactoryTest {
     private IPokedexFactory pokedexFactory;
@@ -37,6 +37,8 @@ class IPokedexFactoryTest {
         assertInstanceOf(IPokedex.class, pokedexFactory.createPokedex(provider, pokemonFactory),
                 "Le résultat obtenu doit être une instance de `Ipokedex`"
         );
+        assertEquals(ipokedex, pokedexFactory.createPokedex(provider, pokemonFactory));
+        verify(pokedexFactory).createPokedex(provider, pokemonFactory);
     }
 
     @AfterEach

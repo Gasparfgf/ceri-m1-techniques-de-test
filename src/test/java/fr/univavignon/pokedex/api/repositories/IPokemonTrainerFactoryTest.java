@@ -9,8 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class IPokemonTrainerFactoryTest {
     private IPokemonTrainerFactory trainerFactory;
@@ -42,6 +41,11 @@ class IPokemonTrainerFactoryTest {
                 trainerFactory.createTrainer("Sasha", Team.MYSTIC, pokedexFactory),
                 "La méthode doit obtenir un 'PokemonTrainer'."
         );
+        assertEquals(
+                trainerFactory.createTrainer("Sasha", Team.MYSTIC, pokedexFactory),
+                pokemonTrainer
+        );
+        PokemonTrainer pokemonTrainer1 = verify(trainerFactory).createTrainer("Sasha", Team.MYSTIC, pokedexFactory);
     }
 
     @AfterEach

@@ -107,10 +107,8 @@ class IPokedexTest {
                 Arrays.asList(pokemon1, pokemon2, pokemon3)
         );
 
-        // je garantis que la liste ne soit pas modifiable
         List<Pokemon> pokemonsList = Collections.unmodifiableList(iPokedex.getPokemons());
 
-        // les méthodes susceptibles de changer la liste
         assertThrows(UnsupportedOperationException.class, () ->{
             pokemonsList.add(pokemon2);
             pokemonsList.remove(0);
@@ -167,10 +165,8 @@ class IPokedexTest {
         when(iPokedex.getPokemons(comparator)).thenReturn(
                 Arrays.asList(pokemon3, pokemon1, pokemon2)
         );
-        // je garantis que la liste ne soit pas modifiable
         List<Pokemon> pokemonsList = Collections.unmodifiableList(iPokedex.getPokemons(comparator));
 
-        // les méthodes susceptibles de changer la liste
         assertThrows(UnsupportedOperationException.class, () ->{
             pokemonsList.add(pokemon2);
             pokemonsList.remove(0);

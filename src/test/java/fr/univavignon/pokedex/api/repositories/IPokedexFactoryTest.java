@@ -30,6 +30,7 @@ class IPokedexFactoryTest {
                 "Le résultat obtenu doit être une instance de `Ipokedex`"
         );
         assertEquals(ipokedex, finalIPokedex);
+
         verify(pokedexFactory).createPokedex(provider, pokemonFactory);
     }
 

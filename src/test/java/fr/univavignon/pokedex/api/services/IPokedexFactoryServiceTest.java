@@ -19,9 +19,11 @@ class IPokedexFactoryServiceTest {
 
     @Test
     void testCreatePokedex() {
+
         IPokemonMetadataProvider metadataProvider = mock(IPokemonMetadataProvider.class);
         IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
         IPokedex pokedex = factory.createPokedex(metadataProvider, pokemonFactory);
+
         assertNotNull(pokedex);
     }
 }

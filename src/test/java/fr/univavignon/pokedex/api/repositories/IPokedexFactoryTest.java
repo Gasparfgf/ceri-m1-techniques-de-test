@@ -24,10 +24,12 @@ class IPokedexFactoryTest {
 
         when(pokedexFactory.createPokedex(provider, pokemonFactory)).thenReturn(ipokedex);
 
-        assertInstanceOf(IPokedex.class, pokedexFactory.createPokedex(provider, pokemonFactory),
+        IPokedex finalIPokedex = pokedexFactory.createPokedex(provider, pokemonFactory);
+
+        assertInstanceOf(IPokedex.class, finalIPokedex,
                 "Le résultat obtenu doit être une instance de `Ipokedex`"
         );
-        assertEquals(ipokedex, pokedexFactory.createPokedex(provider, pokemonFactory));
+        assertEquals(ipokedex, finalIPokedex);
         verify(pokedexFactory).createPokedex(provider, pokemonFactory);
     }
 

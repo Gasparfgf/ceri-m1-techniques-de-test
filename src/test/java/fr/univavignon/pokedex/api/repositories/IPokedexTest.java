@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class IPokedexTest {
+    private PokemonComparators comparator;
     private static IPokedex iPokedex;
     private Pokemon pokemon1;
     private Pokemon pokemon2;
@@ -124,6 +125,37 @@ class IPokedexTest {
                 "Le nom du pokemon à l'index 2 doit être Gaspar.");
 
         verify(iPokedex).getPokemons();
+    }
+
+    @Test
+    @DisplayName("testing CompareByName")
+    void shouldCompareByName() {
+
+        comparator = PokemonComparators.NAME;
+
+        assertTrue(comparator.compare(pokemon1, pokemon2) < 0);
+        assertTrue(comparator.compare(pokemon2, pokemon1) > 0);
+        assertEquals(0, comparator.compare(pokemon1, pokemon1));
+    }
+
+    @Test
+    @DisplayName("testing CompareByIndex")
+    void shouldCompareByIndex() {
+        comparator = PokemonComparators.INDEX;
+
+        assertTrue(comparator.compare(pokemon1, pokemon2) < 0);
+        assertTrue(comparator.compare(pokemon2, pokemon1) > 0);
+        assertEquals(0, comparator.compare(pokemon1, pokemon1));
+    }
+
+    @Test
+    @DisplayName("testing CompareByCp")
+    void shouldCompareByCp() {
+        comparator = PokemonComparators.CP;
+
+        assertTrue(comparator.compare(pokemon2, pokemon1) < 0);
+        assertTrue(comparator.compare(pokemon1, pokemon2) > 0);
+        assertEquals(0, comparator.compare(pokemon2, pokemon2));
     }
 
     @Test

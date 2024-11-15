@@ -37,15 +37,13 @@ class IPokemonTrainerFactoryTest {
         PokemonTrainer pokemonTrainer = new PokemonTrainer("Sasha", Team.MYSTIC, pokedex);
         when(trainerFactory.createTrainer("Sasha", Team.MYSTIC, pokedexFactory)).thenReturn(pokemonTrainer);
 
-        assertInstanceOf(PokemonTrainer.class,
-                trainerFactory.createTrainer("Sasha", Team.MYSTIC, pokedexFactory),
+        PokemonTrainer finalPokemonTrainer = trainerFactory.createTrainer("Sasha", Team.MYSTIC, pokedexFactory);
+
+        assertInstanceOf(PokemonTrainer.class, finalPokemonTrainer,
                 "La méthode doit obtenir un 'PokemonTrainer'."
         );
-        assertEquals(
-                trainerFactory.createTrainer("Sasha", Team.MYSTIC, pokedexFactory),
-                pokemonTrainer
-        );
-        PokemonTrainer pokemonTrainer1 = verify(trainerFactory).createTrainer("Sasha", Team.MYSTIC, pokedexFactory);
+        assertEquals(pokemonTrainer, finalPokemonTrainer);
+        verify(trainerFactory).createTrainer("Sasha", Team.MYSTIC, pokedexFactory);
     }
 
     @AfterEach

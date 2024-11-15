@@ -54,4 +54,40 @@ class IPokedexServiceTest {
         assertEquals(pokemon, pokedexService.getPokemon(0));
     }
 
+    @Test
+    void testGetPokemonInvalidIndex() {
+        assertThrows(PokedexException.class, () -> pokedexService.getPokemon(99));
+        assertThrows(PokedexException.class, () -> pokedexService.getPokemon(-1));
+    }
+
+    @Test
+    void testGetPokemonsUnmodifiableList() {
+        List<Pokemon> pokemons = pokedexService.getPokemons();
+        assertEquals(Collections.singletonList(pokemon), pokemons);
+        assertThrows(UnsupportedOperationException.class, () -> pokemons.add(pokemon));
+    }
+
+    @Test
+    void testGetPokemonsSorted() {
+        pokedexService.addPokemon(pokemon2);
+
+        List<Pokemon> sortedPokemons = pokedexService.getPokemons(Comparator.comparing(Pokemon::getName));
+        assertEquals(Arrays.asList(pokemon, pokemon2), sortedPokemons);
+    }
+
+    @Test
+    void testCreatePokemon() {
+        when(pokemonFactory.createPokemon(0, 500, 100, 3000, 3))
+                .thenReturn(pokemon);
+        Pokemon pokemon = pokedexService.createPokemon(0, 500, 100, 3000, 3);
+        assertEquals("Bulbasaur", pokemon.getName());
+    }
+
+    @Test
+    void testGetPokemonMetadata() throws PokedexException {
+        PokemonMetadata metadata = new PokemonMetadata(0, "Bulbasaur", 126, 126, 90);
+        when(metadataProvider.getPokemonMetadata(0)).thenReturn(metadata);
+        assertEquals(metadata, pokedexService.getPokemonMetadata(0));
+    }
+
 }

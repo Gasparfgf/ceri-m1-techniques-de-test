@@ -43,8 +43,9 @@ class IPokemonMetadataProviderTest {
 
         when(myInterface.getPokemonMetadata(index)).thenReturn(pokemonMetadata);
 
-        assertInstanceOf(PokemonMetadata.class, myInterface.getPokemonMetadata(index));
-        assertEquals(pokemonMetadata, myInterface.getPokemonMetadata(index));
+        PokemonMetadata finalMetaData = myInterface.getPokemonMetadata(index);
+        assertInstanceOf(PokemonMetadata.class, finalMetaData, "On devrait obtenir un PokemonMetadata.");
+        assertEquals(pokemonMetadata, finalMetaData);
         verify(myInterface).getPokemonMetadata(index);
     }
 

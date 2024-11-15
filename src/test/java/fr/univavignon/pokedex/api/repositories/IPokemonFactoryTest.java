@@ -49,15 +49,12 @@ class IPokemonFactoryTest {
         assertTrue(finalPokemon.getCandy() > 0, "Pokemon ne peut pas être créé avec 'candy' négatif.");
     }
 
-    /*
-    Because some values must be limited
-     */
     @Test
     @DisplayName("testing createPokemonBoundaries")
     void shouldRespectCreatePokemonBoundaries(){
 
         assertTrue(finalPokemon.getIndex() <= 150,
-                "Pokemon ne peut pas être créé avec 'index>150'"); // contrainte établie par l'énoncée
+                "Pokemon ne peut pas être créé avec 'index>150'");
         assertTrue(finalPokemon.getIv() <=100,
                 "Pokemon ne peut pas être créé avec 'iv > 100'");
     }

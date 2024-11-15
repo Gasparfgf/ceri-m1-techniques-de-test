@@ -30,7 +30,6 @@ class IPokemonMetadataProviderTest {
 
         PokemonMetadata metadata = myInterface.getPokemonMetadata(index);
 
-        // je garantis que les données renvoyées sont correctes
         assertEquals("Aquali",metadata.getName());
         assertEquals(186, metadata.getAttack());
         assertEquals(168, metadata.getDefense());

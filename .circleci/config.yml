@@ -22,6 +22,7 @@ jobs:
       - run: # Execution des tests unitaires et génération du rapport Jacoco
           name: Run Tests & Generate Reports
           command: mvn clean test
+
       - codecov/upload
 
 workflows:

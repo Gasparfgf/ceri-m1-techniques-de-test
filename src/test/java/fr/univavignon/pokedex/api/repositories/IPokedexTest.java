@@ -52,8 +52,9 @@ class IPokedexTest {
 
         when(iPokedex.size()).thenReturn(3);
 
-        assertTrue(iPokedex.size() >= 0, "La taille ne peut pas être négative.");
-        assertEquals(3, iPokedex.size(), "La taille d'une liste avec trois éléments c'est 3.");
+        int size = iPokedex.size();
+        assertTrue(size >= 0, "La taille ne peut pas être négative.");
+        assertEquals(3, size, "La taille d'une liste avec trois éléments c'est 3.");
 
         verify(iPokedex).size();
     }
@@ -75,8 +76,10 @@ class IPokedexTest {
 
         when(iPokedex.getPokemon(idx2)).thenReturn(pokemon2);
 
-        assertInstanceOf(Pokemon.class, iPokedex.getPokemon(idx2), "On doit obtenir un pokemon.");
-        assertEquals("Bulbizarre", iPokedex.getPokemon(idx2).getName(),
+        Pokemon finalPokemon = iPokedex.getPokemon(idx2);
+
+        assertInstanceOf(Pokemon.class, finalPokemon, "On doit obtenir un pokemon.");
+        assertEquals("Bulbizarre", finalPokemon.getName(),
                 "On ne peut pas obtenir un Ipokedex différent pour l'index donné.");
 
         verify(iPokedex).getPokemon(idx2);

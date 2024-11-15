@@ -16,7 +16,9 @@ class IPokemonFactoryServiceTest {
 
     @Test
     void testCreatePokemon() {
+
         Pokemon pokemon = factory.createPokemon(0, 500, 100, 3000, 3);
+
         assertNotNull(pokemon);
         assertEquals("Bulbizarre", pokemon.getName());
         assertEquals(126, pokemon.getAttack());

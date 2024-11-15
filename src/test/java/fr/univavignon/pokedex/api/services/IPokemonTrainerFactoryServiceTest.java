@@ -29,6 +29,7 @@ class IPokemonTrainerFactoryServiceTest {
 
     @Test
     void testCreateTrainer() {
+
         IPokedex pokedex = mock(IPokedex.class);
         when(pokedexFactory.createPokedex(metadataProvider, pokemonFactory)).thenReturn(pokedex);
 

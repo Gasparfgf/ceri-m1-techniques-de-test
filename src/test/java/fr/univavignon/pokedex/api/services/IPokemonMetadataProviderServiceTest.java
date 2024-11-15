@@ -17,7 +17,9 @@ class IPokemonMetadataProviderServiceTest {
 
     @Test
     void testGetPokemonMetadataValidIndex() throws PokedexException {
+
         PokemonMetadata metadata = metadataProvider.getPokemonMetadata(1);
+
         assertNotNull(metadata);
         assertEquals("Bulbasaur", metadata.getName());
     }

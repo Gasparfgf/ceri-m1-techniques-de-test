@@ -27,7 +27,7 @@ jobs:
 
       - run:
           name: Run Checkstyle
-          run: mvn checkstyle:check
+          command: mvn checkstyle:check
 
 workflows:
   version: 2

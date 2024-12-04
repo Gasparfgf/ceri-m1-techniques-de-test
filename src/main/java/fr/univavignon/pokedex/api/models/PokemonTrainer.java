@@ -16,13 +16,13 @@ import lombok.Setter;
 public class PokemonTrainer {
 
 	/** Trainer name. **/
-	private final String name;
+    private final String name;
 
 	/** Trainer team. **/
-	private final Team team;
+    private final Team team;
 	
 	/** Trainer pokedex. **/
-	private final IPokedex pokedex;
+    private final IPokedex pokedex;
 	
 	/**
 	 * Default constructor.

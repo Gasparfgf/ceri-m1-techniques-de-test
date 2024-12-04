@@ -12,12 +12,15 @@ public class IPokemonTrainerFactoryService implements IPokemonTrainerFactory {
     private final IPokemonFactory pokemonFactory;
     private List<PokemonTrainer> pokemonTrainerList;
 
-    public IPokemonTrainerFactoryService(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory){
+
+    public IPokemonTrainerFactoryService(
+            IPokemonMetadataProvider metadataProvider,
+            IPokemonFactory pokemonFactory
+    ) {
         this.pokemonTrainerList = new ArrayList<>();
         this.metadataProvider = metadataProvider;
         this.pokemonFactory = pokemonFactory;
     }
-
 
     @Override
     public PokemonTrainer createTrainer(String name, Team team, IPokedexFactory pokedexFactory) {
@@ -26,4 +29,5 @@ public class IPokemonTrainerFactoryService implements IPokemonTrainerFactory {
         pokemonTrainerList.add(trainer);
         return trainer;
     }
+
 }

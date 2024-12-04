@@ -19,6 +19,6 @@ public interface IPokemonFactory {
 	 * @param candy Required candy for upgrading pokemon.
 	 * @return Created pokemon instance.
 	 */
-	Pokemon createPokemon(int index, int cp, int hp, int dust, int candy);
+    Pokemon createPokemon(int index, int cp, int hp, int dust, int candy);
 	
 }

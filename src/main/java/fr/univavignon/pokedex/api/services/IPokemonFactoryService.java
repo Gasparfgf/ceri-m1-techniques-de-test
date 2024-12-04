@@ -9,7 +9,7 @@ import java.util.Map;
 public class IPokemonFactoryService implements IPokemonFactory {
     private Map<Integer, Pokemon> pokemonMap;
 
-    public IPokemonFactoryService(){
+    public IPokemonFactoryService() {
         this.pokemonMap = new HashMap<>();
     }
 

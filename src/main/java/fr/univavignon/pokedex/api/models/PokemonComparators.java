@@ -21,22 +21,21 @@ public enum PokemonComparators implements Comparator<Pokemon> {
 	;
 	
 	/** Delegate comparator instance. **/
-	private final Comparator<Pokemon> delegate;
+    private final Comparator<Pokemon> delegate;
 
 	/**
 	 * Default constructor.
 	 * 
 	 * @param delegate Delegate comparator instance.
 	 */
-	private PokemonComparators(final Comparator<Pokemon> delegate) {
-		this.delegate = delegate;
-	}
+    private PokemonComparators(final Comparator<Pokemon> delegate) {
+        this.delegate = delegate;
+    }
 
 	/** {@inheritDoc} **/
-	@Override
-	public int compare(final Pokemon first, final Pokemon second) {
-		
-		return delegate.compare(first, second);
-	}
+    @Override
+    public int compare(final Pokemon first, final Pokemon second) {
+        return delegate.compare(first, second);
+    }
 
 }

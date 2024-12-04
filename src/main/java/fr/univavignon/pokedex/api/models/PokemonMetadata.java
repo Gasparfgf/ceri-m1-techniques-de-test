@@ -16,19 +16,19 @@ import lombok.Setter;
 public class PokemonMetadata {
 
 	/** Pokemon index. **/
-	private final int index;
+    private final int index;
 
 	/** Pokemon name. **/
-	private final String name;
+    private final String name;
 
 	/** Pokemon attack level. **/
-	private final int attack;
+    private final int attack;
 
 	/** Pokemon defense level. **/
-	private final int defense;
+    private final int defense;
 
 	/** Pokemon stamina level. **/
-	private final int stamina;
+    private final int stamina;
 
 	/**
 	 * Default constructor.

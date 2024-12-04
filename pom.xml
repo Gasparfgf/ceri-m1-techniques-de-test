@@ -134,11 +134,24 @@
                 </configuration>
             </plugin>
 
-            <!-- to package the project -->
+            <!-- to generate javadoc automatically -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <show>private</show>
+                    <doclint>none</doclint>
+                    <encoding>UTF-8</encoding>
+                    <outputDirectory>${project.build.directory}/javadoc</outputDirectory>
+                </configuration>
             </plugin>
 
             <!-- to package the project -->

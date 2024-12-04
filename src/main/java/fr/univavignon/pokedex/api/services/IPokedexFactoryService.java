@@ -20,7 +20,7 @@ public class IPokedexFactoryService implements IPokedexFactory {
             IPokemonMetadataProvider metadataProvider,
             IPokemonFactory pokemonFactory
     ) {
-        IPokedex pokedex = new IPokedexService(metadataProvider, pokemonFactory);
+        final IPokedex pokedex = new IPokedexService(metadataProvider, pokemonFactory);
         pokedexList.add(pokedex);
         return pokedex;
     }

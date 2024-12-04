@@ -12,22 +12,22 @@ import lombok.Setter;
 @Getter
 public final class Pokemon extends PokemonMetadata {
 
-	/** Combat Point of the pokemon. **/
+    /** Combat Point of the pokemon. **/
     private final int cp;
 
-	/** HP of the pokemon. **/
+    /** HP of the pokemon. **/
     private final int hp;
 
-	/** Required dust for upgrading this pokemon. **/
+    /** Required dust for upgrading this pokemon. **/
     private final int dust;
 
-	/** Required candy for upgrading this pokemon. **/
+    /** Required candy for upgrading this pokemon. **/
     private final int candy;
 
-	/** IV perfection percentage. **/
+    /** IV perfection percentage. **/
     private final double iv;
 	
-	/**
+    /**
 	 * Default constructor.
 	 * 
 	 * @param index Pokemon index.
@@ -40,7 +40,7 @@ public final class Pokemon extends PokemonMetadata {
 	 * @param dust Required dust for upgrading this pokemon.
 	 * @param candy Required candy for upgrading this pokemon.
 	 * @param iv IV perfection percentage.
-	 */
+    */
     public Pokemon(
 			final int index,
 			final String name,

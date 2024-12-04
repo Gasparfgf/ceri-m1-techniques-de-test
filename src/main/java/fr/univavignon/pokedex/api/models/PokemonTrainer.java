@@ -15,21 +15,21 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class PokemonTrainer {
 
-	/** Trainer name. **/
+    /** Trainer name. **/
     private final String name;
 
-	/** Trainer team. **/
+    /** Trainer team. **/
     private final Team team;
 	
-	/** Trainer pokedex. **/
+    /** Trainer pokedex. **/
     private final IPokedex pokedex;
 	
-	/**
+    /**
 	 * Default constructor.
 	 * 
 	 * @param name Trainer name.
 	 * @param team Trainer team.
 	 * @param pokedex Trainer pokedex.
-	 */
+    */
 
 }

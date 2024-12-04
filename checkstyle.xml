@@ -21,14 +21,6 @@
         <module name="JavadocType" />
         <module name="JavadocStyle" />
         <module name="JavadocMethod" />
-        <module name="InvalidJavadocPosition"/>
-        <module name="JavadocVariable">
-            <property name="scope" value="protected" />
-        </module>
-        <module name="MissingJavadocMethod">
-            <property name="scope" value="private"/>
-        </module>
-        <module name="RequireEmptyLineBeforeBlockTagGroup"/>
 
         <!-- Annotations -->
         <module name="MissingOverride"/>

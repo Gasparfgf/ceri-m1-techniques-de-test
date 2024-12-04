@@ -27,6 +27,7 @@
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <maven-checkstyle-plugin.version>3.4.0</maven-checkstyle-plugin.version>
+        <maven-javadoc-plugin.version>3.8.0</maven-javadoc-plugin.version>
     </properties>
 
     <dependencies>
@@ -131,6 +132,13 @@
                     <configLocation>checkstyle.xml</configLocation>
                     <failOnViolation>true</failOnViolation>
                 </configuration>
+            </plugin>
+
+            <!-- to package the project -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
             </plugin>
 
             <!-- to package the project -->

@@ -70,3 +70,7 @@ Si vous ne spécifiez pas de tag, le dernier commit à la date-heure de la fin d
 - **Code coverage** :
 
   [![codecov](https://codecov.io/github/Gasparfgf/ceri-m1-techniques-de-test/branch/master/graph/badge.svg?token=8ONP5BCPJ6)](https://codecov.io/github/Gasparfgf/ceri-m1-techniques-de-test)
+
+- **Code quality** :
+  ![Checkstyle Status](https://github.com/Gasparfgf/ceri-m1-techniques-de-test/actions/workflows/config.yml/badge.svg)
+

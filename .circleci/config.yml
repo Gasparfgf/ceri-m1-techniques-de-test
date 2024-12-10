@@ -35,7 +35,6 @@ jobs:
             git config --global user.email "gaspardarosafrancisco@gmail.com"
             git config --global user.name "gasparfgf"
             git clone --branch gh-pages "https://${GITHUB_TOKEN}@github.com/gasparfgf/ceri-m1-techniques-de-test.git" gh-pages
-            ls target/site/apidocs/
             cp -r target/site/apidocs/* gh-pages/
             cd gh-pages
             git add .

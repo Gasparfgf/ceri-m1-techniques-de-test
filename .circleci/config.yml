@@ -32,8 +32,8 @@ jobs:
       - run:
           name: Deploy Javadoc to GitHub Pages
           command: |
-            git config --global user.email "circleci@github.com"
-            git config --global user.name "CircleCI"
+            git config --global user.email "gasparfgf"
+            git config --global user.name "gaspardarosafrancisco@gmail.com"
             git clone --branch gh-pages "https://${GITHUB_TOKEN}@github.com/gasparfgf/ceri-m1-techniques-de-test.git" gh-pages
             cp -r target/site/apidocs/* gh-pages/
             cd gh-pages

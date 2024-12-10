@@ -1,8 +1,9 @@
 name: Generate and Deploy Javadoc
 
 on:
-  pull_request:
-    branches: [master]
+  push:
+    branches:
+      - master
 
 jobs:
   generate-deploy-javadoc:
@@ -18,8 +19,8 @@ jobs:
           distribution: 'temurin'
           java-version: '8'
 
-      - name: Generate Javadoc
-        run: mvn clean javadoc:javadoc
+      - name: Build and Generate Javadoc
+        run: mvn clean package javadoc:javadoc
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

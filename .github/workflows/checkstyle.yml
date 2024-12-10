@@ -23,4 +23,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: checkstyle-report
-          path: target/reports/checkstyle.html
+          path: target/site/checkstyle.html

@@ -25,26 +25,17 @@ jobs:
 
       - codecov/upload
 
-      - git config --global user.name "gasparfgf"
-        git config --global user.email "gaspardarosafrancisco@gmail.com"
-        mkdir -p /tmp/gh-pages
-        git clone https://github.com/gasparfgf/ceri-m1-techniques-de-test.git /tmp/gh-pages
-        cd /tmp/gh-pages
-        if ! git show-ref --quiet refs/heads/gh-pages; then
-        git checkout --orphan gh-pages
-        git rm -rf .
-        echo "Initial commit for gh-pages" > index.html
-        git add index.html
-        git commit -m "Create gh-pages branch"
-        git push origin gh-pages
-        fi
-        cd -
-        
-        cp -R target/site/apidocs/* /tmp/gh-pages/
-        cd /tmp/gh-pages
-        git add .
-        git commit -m "Update JavaDoc"
-        git push origin gh-pages
+      - run:
+          name: Generate Javadoc
+          command: mvn clean javadoc:javadoc
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/reports/apidocs
+
+
 
 workflows:
   version: 2
@@ -53,5 +44,4 @@ workflows:
       - build:
         filters:
           branches:
-            # Branche master uniquement
             only: master

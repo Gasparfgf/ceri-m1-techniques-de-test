@@ -32,16 +32,15 @@ jobs:
       - run:
           name: Deploy Javadoc to GitHub Pages
           command: |
-            git config --global user.email "gaspardarosafrancisco@gmail.com"
-            git config --global user.name "gasparfgf"
-            git config --global push.autoSetupRemote true
-            git add docs/
-            if git diff-index --quiet HEAD --; then
-              echo "No changes to commit, skipping git commit and push."
-            else
-              git commit -am "Update Checkstyle badge"
-              git push
+            if [[ "$CIRCLE_BRANCH" == "gh-pages" ]]; then
+              echo "Skip build circleci on gh-pages branch.";
+              exit 0;
             fi
+            mvn -B -DskipTests clean package
+
+      - run:
+          name: Generate Javadoc
+          command: mvn -B javadoc:javadoc
 
 
 workflows:
@@ -52,5 +51,3 @@ workflows:
         filters:
           branches:
             only: master
-          ignore:
-            - gh-pages

@@ -32,14 +32,15 @@ jobs:
       - run:
           name: Deploy Javadoc to GitHub Pages
           command: |
-            git config --global user.email "gaspardarosafrancisco@gmail.com"
-            git config --global user.name "gasparfgf"
-            git clone --branch gh-pages "https://${GITHUB_TOKEN}@github.com/gasparfgf/ceri-m1-techniques-de-test.git" gh-pages
-            cp -r target/site/apidocs/* gh-pages/
-            cd gh-pages
-            git add .
-            git commit -m "Update Javadoc [skip ci]"
-            git push origin gh-pages
+            if [[ "$CIRCLE_BRANCH" == "gh-pages" ]]; then
+              echo "Skip build circleci on gh-pages branch.";
+              exit 0;
+            fi
+            mvn -B -DskipTests clean package
+
+      - run:
+          name: Generate Javadoc
+          command: mvn -B javadoc:javadoc
 
 
 workflows:

@@ -23,7 +23,7 @@ public class IPokemonTrainerFactoryService implements IPokemonTrainerFactory {
     }
 
     @Override
-    public PokemonTrainer createTrainer(String name, Team team, IPokedexFactory pokedexFactory) {
+    public PokemonTrainer createTrainer(String name, Team team, IPokedexFactory pokedexFactory){
         final IPokedex pokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
         final PokemonTrainer trainer = new PokemonTrainer(name, team, pokedex);
         pokemonTrainerList.add(trainer);

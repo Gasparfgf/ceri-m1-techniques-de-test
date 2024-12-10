@@ -34,7 +34,7 @@ jobs:
           command: |
             git config --global user.email "circleci@github.com"
             git config --global user.name "CircleCI"
-            git clone --branch gh-pages "https://${GITHUB_TOKEN}@github.com/ceri-m1-techniques-de-test.git" gh-pages
+            git clone --branch gh-pages "https://${GITHUB_TOKEN}@github.com/gasparfgf/ceri-m1-techniques-de-test.git" gh-pages
             cp -r target/site/apidocs/* gh-pages/
             cd gh-pages
             git add .

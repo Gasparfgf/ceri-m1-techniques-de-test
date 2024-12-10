@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"fr.univavignon.pokedex.api.models"},{"l":"fr.univavignon.pokedex.api.repositories"},{"l":"fr.univavignon.pokedex.api.services"}];updateSearchResults();

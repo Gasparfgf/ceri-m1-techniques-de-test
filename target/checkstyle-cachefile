@@ -1,4 +1,4 @@
-#Tue Dec 10 11:01:13 CET 2024
+#Tue Dec 10 12:49:35 CET 2024
 /home/gasparfgf/workspace/techniques\ de\ test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/models/PokedexException.java=1733816977956
 /home/gasparfgf/workspace/techniques\ de\ test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/models/Pokemon.java=1733816977957
 /home/gasparfgf/workspace/techniques\ de\ test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/models/PokemonComparators.java=1733816977957
@@ -14,4 +14,5 @@
 /home/gasparfgf/workspace/techniques\ de\ test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/services/IPokedexService.java=1733816977959
 /home/gasparfgf/workspace/techniques\ de\ test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/services/IPokemonFactoryService.java=1733816977959
 /home/gasparfgf/workspace/techniques\ de\ test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/services/IPokemonMetadataProviderService.java=1733816977959
+/home/gasparfgf/workspace/techniques\ de\ test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/services/IPokemonTrainerFactoryService.java=1733825809954
 configuration*?=A8D4D4B3B03A1F2B0B4588C2D3C10B193B03D2B0

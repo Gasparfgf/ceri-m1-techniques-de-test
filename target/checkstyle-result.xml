@@ -1,34 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="9.3">
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/models/PokedexException.java">
-</file>
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/models/Pokemon.java">
-</file>
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/models/PokemonComparators.java">
-</file>
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/models/PokemonMetadata.java">
-</file>
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/models/PokemonTrainer.java">
-</file>
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/services/IPokedexService.java">
-</file>
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/services/IPokemonFactoryService.java">
-</file>
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/services/IPokedexFactoryService.java">
-</file>
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/services/IPokemonMetadataProviderService.java">
-</file>
 <file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/services/IPokemonTrainerFactoryService.java">
-<error line="26" column="96" severity="error" message="&apos;{&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
-</file>
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/repositories/IPokemonFactory.java">
-</file>
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/repositories/IPokedexFactory.java">
-</file>
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/repositories/IPokedex.java">
-</file>
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/repositories/IPokemonMetadataProvider.java">
-</file>
-<file name="/home/gasparfgf/workspace/techniques de test/ceri-m1-techniques-de-test/src/main/java/fr/univavignon/pokedex/api/repositories/IPokemonTrainerFactory.java">
 </file>
 </checkstyle>

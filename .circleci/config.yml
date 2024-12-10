@@ -25,9 +25,6 @@ jobs:
 
       - codecov/upload
 
-      - run:
-          name: Generate Checkstyle Report
-          command: mvn checkstyle:checkstyle
 
 workflows:
   version: 2

@@ -24,18 +24,13 @@ public class RocketPokemonFactory implements IPokemonFactory {
         //TODO : Gotta map them all !
         index2name = Collections.unmodifiableMap(aMap);
     }
-	
-    public static int generateRandomStat() {
-        int total = 0;
-        for (int i = 0; i < 1000000; i++) {
-            final Random rn = new Random();
-            final int r = rn.nextInt(2);
-            total = total + r;
-        }
-        return total / 10000;
-    }
 
-    @Override
+	public static int generateRandomStat() {
+		Random rn = new Random();
+		return rn.nextInt(101);
+	}
+
+	@Override
 	public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
         final String name;
         if (!index2name.containsKey(index)) {

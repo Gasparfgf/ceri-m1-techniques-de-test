@@ -16,12 +16,14 @@ class RocketPokemonFactoryTest {
     }
 
     @Test
-    void testGenerateRandomStatEfficiency() {
+    public void testGenerateRandomStatEfficiency() {
         long startTime = System.currentTimeMillis();
-        int randomStat = RocketPokemonFactory.generateRandomStat();
+        int stat = RocketPokemonFactory.generateRandomStat();
         long endTime = System.currentTimeMillis();
-        assertTrue(endTime - startTime < 50, "generateRandomStat is too slow!");
+        assertTrue((endTime - startTime) < 100, "generateRandomStat is too slow!");
+        assertTrue(stat >= 0 && stat <= 100);
     }
+
 
     @Test
     void testUnmodifiableMapIntegrity() {

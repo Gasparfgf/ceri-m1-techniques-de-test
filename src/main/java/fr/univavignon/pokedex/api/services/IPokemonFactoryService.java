@@ -9,13 +9,13 @@ import java.util.Map;
 public class IPokemonFactoryService implements IPokemonFactory {
     private Map<Integer, Pokemon> pokemonMap;
 
-    public IPokemonFactoryService(){
+    public IPokemonFactoryService() {
         this.pokemonMap = new HashMap<>();
     }
 
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
-        Pokemon pokemon = new Pokemon(index, "Bulbizarre", 126, 126,
+        final Pokemon pokemon = new Pokemon(index, "Bulbizarre", 126, 126,
                 90, cp, hp, dust, candy, 56);
         pokemonMap.put(index, pokemon);
 

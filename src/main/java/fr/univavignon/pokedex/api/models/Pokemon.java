@@ -12,22 +12,22 @@ import lombok.Setter;
 @Getter
 public final class Pokemon extends PokemonMetadata {
 
-	/** Combat Point of the pokemon. **/
-	private final int cp;
+    /** Combat Point of the pokemon. **/
+    private final int cp;
 
-	/** HP of the pokemon. **/
-	private final int hp;
+    /** HP of the pokemon. **/
+    private final int hp;
 
-	/** Required dust for upgrading this pokemon. **/
-	private final int dust;
+    /** Required dust for upgrading this pokemon. **/
+    private final int dust;
 
-	/** Required candy for upgrading this pokemon. **/
-	private final int candy;
+    /** Required candy for upgrading this pokemon. **/
+    private final int candy;
 
-	/** IV perfection percentage. **/
-	private final double iv;
+    /** IV perfection percentage. **/
+    private final double iv;
 	
-	/**
+    /**
 	 * Default constructor.
 	 * 
 	 * @param index Pokemon index.
@@ -40,8 +40,8 @@ public final class Pokemon extends PokemonMetadata {
 	 * @param dust Required dust for upgrading this pokemon.
 	 * @param candy Required candy for upgrading this pokemon.
 	 * @param iv IV perfection percentage.
-	 */
-	public Pokemon(
+    */
+    public Pokemon(
 			final int index,
 			final String name,
 			final int attack,
@@ -51,13 +51,14 @@ public final class Pokemon extends PokemonMetadata {
 			final int hp,
 			final int dust,
 			final int candy,
-			final double iv) {
-		super(index, name, attack, defense, stamina);
-		this.cp = cp;
-		this.hp = hp;
-		this.dust = dust;
-		this.candy = candy;
-		this.iv = iv;
-	}
+			final double iv
+    ) {
+        super(index, name, attack, defense, stamina);
+        this.cp = cp;
+        this.hp = hp;
+        this.dust = dust;
+        this.candy = candy;
+        this.iv = iv;
+    }
 	
 }

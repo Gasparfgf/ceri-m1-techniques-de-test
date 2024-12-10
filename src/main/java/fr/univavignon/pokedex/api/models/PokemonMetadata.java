@@ -15,22 +15,22 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class PokemonMetadata {
 
-	/** Pokemon index. **/
-	private final int index;
+    /** Pokemon index. **/
+    private final int index;
 
-	/** Pokemon name. **/
-	private final String name;
+    /** Pokemon name. **/
+    private final String name;
 
-	/** Pokemon attack level. **/
-	private final int attack;
+    /** Pokemon attack level. **/
+    private final int attack;
 
-	/** Pokemon defense level. **/
-	private final int defense;
+    /** Pokemon defense level. **/
+    private final int defense;
 
-	/** Pokemon stamina level. **/
-	private final int stamina;
+    /** Pokemon stamina level. **/
+    private final int stamina;
 
-	/**
+    /**
 	 * Default constructor.
 	 * 
 	 * @param index Pokemon index.
@@ -38,6 +38,6 @@ public class PokemonMetadata {
 	 * @param attack Attack level.
 	 * @param defense Defense level.
 	 * @param stamina Stamina level.
-	 */
+    */
 
 }

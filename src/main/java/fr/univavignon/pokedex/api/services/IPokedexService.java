@@ -17,7 +17,10 @@ public class IPokedexService implements IPokedex {
     private final IPokemonFactory pokemonFactory;
     private final List<Pokemon> pokemonList;
 
-    public IPokedexService(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
+    public IPokedexService(
+            IPokemonMetadataProvider metadataProvider,
+            IPokemonFactory pokemonFactory
+    ) {
         this.metadataProvider = metadataProvider;
         this.pokemonFactory = pokemonFactory;
         this.pokemonList = new ArrayList<>();
@@ -31,12 +34,12 @@ public class IPokedexService implements IPokedex {
     @Override
     public int addPokemon(Pokemon pokemon) {
         pokemonList.add(pokemon);
-        return pokemonList.size()-1; //renvoie l'indice du pokemon rajouté
+        return pokemonList.size() - 1; //renvoie l'indice du pokemon rajouté
     }
 
     @Override
     public Pokemon getPokemon(int id) throws PokedexException {
-        if(id < 0 || id > pokemonList.size())
+        if (id < 0 || id > pokemonList.size())
             throw new PokedexException("Le pokemon pour l'indice donné n'existe pas.");
         return pokemonList.get(id);
     }
@@ -48,7 +51,7 @@ public class IPokedexService implements IPokedex {
 
     @Override
     public List<Pokemon> getPokemons(Comparator<Pokemon> order) {
-        List<Pokemon> listToBeSorted = new ArrayList<>(pokemonList);
+        final List<Pokemon> listToBeSorted = new ArrayList<>(pokemonList);
         listToBeSorted.sort(order);
         return Collections.unmodifiableList(listToBeSorted);
     }

@@ -25,6 +25,10 @@ jobs:
 
       - codecov/upload
 
+      - run:
+          name: Run Checkstyle
+          command: mvn checkstyle:check
+
 workflows:
   version: 2
   build_and_test:

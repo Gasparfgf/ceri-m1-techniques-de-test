@@ -34,12 +34,14 @@ jobs:
           command: |
             git config --global user.email "gaspardarosafrancisco@gmail.com"
             git config --global user.name "gasparfgf"
-            git clone --branch gh-pages "https://${GITHUB_TOKEN}@github.com/gasparfgf/ceri-m1-techniques-de-test.git" gh-pages
-            cp -r target/site/apidocs/* gh-pages/
-            cd gh-pages
-            git add .
-            git commit -m "Update Javadoc [skip ci]"
-            git push origin gh-pages
+            git config --global push.autoSetupRemote true
+            git add docs/
+            if git diff-index --quiet HEAD --; then
+              echo "No changes to commit, skipping git commit and push."
+            else
+              git commit -am "Update Checkstyle badge"
+              git push
+            fi
 
 
 workflows:

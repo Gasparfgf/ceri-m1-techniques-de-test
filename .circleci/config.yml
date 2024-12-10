@@ -28,6 +28,19 @@ jobs:
       - run:
           name: Run Checkstyle
           command: mvn checkstyle:check
+      - run:
+          name: Publish checkstyle badge to GitHub
+          command: |
+            git config --global user.email "gaspardarosafrancisco@gmail.com"
+            git config --global user.name "Gasparfgf"
+            git config --global push.autoSetupRemote true
+            git add docs/
+            if git diff-index --quiet HEAD --; then
+              echo "No changes to commit, skipping git commit and push."
+            else
+              git commit -am "Update Checkstyle badge"
+              git push
+            fi
 
 workflows:
   version: 2

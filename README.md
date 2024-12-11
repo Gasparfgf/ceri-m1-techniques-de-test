@@ -28,18 +28,22 @@ Le dossier `src` contient la définition de l'ensemble des interfaces qui seront
 
 ## Structure
 
-**Circle CI** :
+**.circle CI** :
+  
   Contient le fichier config.yml responsable pour l'intégration continue.
 
 **.github** :
+  
   Contient les fichiers github actions.
 
 **models** :
+  
   Ce dossier contient les classes modèles qui se concentrent uniquement sur la structure des données et la logique métier de base..
     - Par exemple : la classe *Pokemon* est un modèle parce qu'elle contient les attributs et comportements fondamentaux d'un Pokémon.
   - Chemin : *src/main/java/fr/univavignon/pokedex/api/models*
 
 **repositories** :
+  
   Ce dossier contient l'architecture qui sépare la logique métier de l'accès aux données. C'est à dire, les interfaces.
     - Par exemple : les interfaces comme *IPokedexFactory* définissent les contrats pour interagir avec les données, mais elles ne contiennent pas d'implémentation.
   - Chemin :
@@ -47,6 +51,7 @@ Le dossier `src` contient la définition de l'ensemble des interfaces qui seront
     - tests : *src/test/java/fr/univavignon/pokedex/api/repositories*
 
 **Service** :
+  
   Ce dossier contient l'implémentation de la logique métier et gère les règles d'accès aux données via les repositories. Ainsi vous y trouverez toutes les implémentations.
     - Par exemple : l'interface IPokemonRepository définit une méthode getPokemonById(int id). La classe PokemonRepositoryService implémente cette méthode en effectuant des appels SQL ou en manipulant une collection en mémoire.
   - Chemin :
